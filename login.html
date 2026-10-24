@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Masuk — ART Learning Management</title>
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <link rel="apple-touch-icon" href="img/logo.png" />
+  <meta property="og:title" content="ART Learning Management" />
+  <meta property="og:description" content="Sistem Pembelajaran Digital Terintegrasi ART Learning Management." />
+  <meta property="og:image" content="img/thumbnail.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tw-config.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+  <div class="min-h-screen grid lg:grid-cols-[1.05fr_1fr]">
+
+    <!-- ============ Panel brand (disembunyikan di layar kecil) ============ -->
+    <aside class="brand-panel hidden lg:flex flex-col justify-between p-10 xl:p-12 text-white">
+      <div class="flex items-center gap-3">
+        <img src="img/logo.png" alt="ART Logo" class="w-11 h-11 rounded-xl object-contain shadow-md border border-white/10" />
+        <div class="leading-tight">
+          <p class="font-extrabold text-lg tracking-tight">ART</p>
+          <p class="text-xs text-white/60 font-semibold tracking-wider uppercase">Learning Management System</p>
+        </div>
+      </div>
+
+      <div class="max-w-md my-6 space-y-6">
+        <div class="relative rounded-2xl overflow-hidden border border-white/15 shadow-2xl group bg-slate-900/40">
+          <img src="img/thumbnail.jpg" alt="ART Learning Management Preview" class="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0e1726]/80 via-transparent to-transparent pointer-events-none"></div>
+          <span class="absolute bottom-3 left-3 px-2.5 py-1 rounded-lg bg-black/50 backdrop-blur-md text-white text-[11px] font-semibold flex items-center gap-1.5 border border-white/20">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Platform LMS Terpadu
+          </span>
+        </div>
+
+        <div>
+          <h1 class="text-3xl font-extrabold tracking-tight leading-[1.2]">Seluruh aktivitas kuliahmu, dalam satu tempat.</h1>
+          <p class="mt-2 text-white/70 text-sm leading-relaxed">Pantau jadwal, tugas, ujian, nilai, hingga pembayaran tanpa berpindah-pindah aplikasi.</p>
+        </div>
+
+        <ul class="grid grid-cols-2 gap-2.5 text-xs">
+          <li class="flex items-center gap-2 text-white/85"><i data-lucide="calendar-days" class="w-4 h-4 text-brand-500"></i> Jadwal kuliah</li>
+          <li class="flex items-center gap-2 text-white/85"><i data-lucide="clipboard-list" class="w-4 h-4 text-brand-500"></i> Tugas &amp; ujian</li>
+          <li class="flex items-center gap-2 text-white/85"><i data-lucide="graduation-cap" class="w-4 h-4 text-brand-500"></i> Nilai &amp; IPK</li>
+          <li class="flex items-center gap-2 text-white/85"><i data-lucide="wallet" class="w-4 h-4 text-brand-500"></i> Tagihan &amp; bayar</li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-5xl font-extrabold tracking-tight tabular-nums" data-clock>--:--:--</p>
+        <p class="mt-1 text-white/60 text-sm"><span data-date>—</span> · WIB</p>
+      </div>
+    </aside>
+
+    <!-- ============ Form ============ -->
+    <main class="flex items-center justify-center px-5 py-10 sm:px-10">
+      <div class="w-full max-w-md">
+
+        <!-- Brand (layar kecil) -->
+        <div class="lg:hidden flex items-center justify-between mb-8">
+          <div class="flex items-center gap-3">
+            <img src="img/logo.png" alt="ART Logo" class="w-10 h-10 rounded-xl object-contain shadow-sm border border-slate-200/60" />
+            <p class="font-extrabold tracking-tight leading-tight">ART<span class="block text-[11px] font-semibold tracking-wider uppercase t-muted">Learning Management System</span></p>
+          </div>
+          <div class="text-right leading-tight">
+            <p class="font-bold tabular-nums" data-clock>--:--:--</p>
+            <p class="text-[11px] t-muted" data-date>—</p>
+          </div>
+        </div>
+
+        <div class="tabs mb-8" role="tablist">
+          <button class="tab active" data-tab="login" role="tab">Masuk</button>
+          <button class="tab" data-tab="register" role="tab">Daftar</button>
+        </div>
+
+        <!-- ---------- Masuk ---------- -->
+        <section id="panel-login">
+          <h2 class="text-2xl font-extrabold tracking-tight">Selamat datang kembali 👋</h2>
+          <p class="t-soft text-sm mt-1.5">Masuk dengan NIM dan kata sandi akunmu.</p>
+
+          <form id="form-login" class="mt-7 space-y-4" novalidate>
+            <div>
+              <label class="label" for="l-nim">NIM</label>
+              <input id="l-nim" class="input" inputmode="numeric" autocomplete="username" placeholder="Contoh: 312410511" />
+            </div>
+            <div>
+              <label class="label" for="l-pass">Kata sandi</label>
+              <div class="relative">
+                <input id="l-pass" type="password" class="input pr-11" autocomplete="current-password" placeholder="Masukkan kata sandi" />
+                <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 btn-ghost btn-sm btn !px-2" data-toggle-pass="l-pass" aria-label="Tampilkan kata sandi"><i data-lucide="eye" class="w-4 h-4"></i></button>
+              </div>
+            </div>
+            <div class="flex items-center justify-between text-sm">
+              <label class="flex items-center gap-2 cursor-pointer select-none t-soft">
+                <input id="l-remember" type="checkbox" class="w-4 h-4 rounded accent-[#1b1b3a]" /> Ingat saya
+              </label>
+              <button type="button" id="btn-forgot" class="font-semibold hover:underline">Lupa kata sandi?</button>
+            </div>
+            <p id="l-error" class="field-error hidden"></p>
+            <button id="l-submit" class="btn btn-primary w-full !py-3.5 !text-sm" type="submit">Masuk</button>
+          </form>
+
+          <div class="mt-6 rounded-2xl border border-dashed border-slate-300 bg-white p-4 text-sm">
+            <p class="font-semibold flex items-center gap-2"><i data-lucide="info" class="w-4 h-4 text-brand-600"></i> Akun demo</p>
+            <p class="t-soft mt-1.5">NIM <span class="font-semibold text-ink">312410511</span> · Sandi <span class="font-semibold text-ink">mahasiswa123</span></p>
+            <button type="button" id="btn-fill" class="btn btn-outline btn-sm mt-3">Isi otomatis</button>
+          </div>
+        </section>
+
+        <!-- ---------- Daftar ---------- -->
+        <section id="panel-register" class="hidden">
+          <h2 class="text-2xl font-extrabold tracking-tight">Buat akun baru</h2>
+          <p class="t-soft text-sm mt-1.5">Daftar menggunakan NIM yang diberikan kampus.</p>
+
+          <form id="form-register" class="mt-7 space-y-4" novalidate>
+            <div>
+              <label class="label" for="r-nama">Nama lengkap</label>
+              <input id="r-nama" class="input" autocomplete="name" placeholder="Sesuai KTM" />
+              <p class="field-error hidden" data-err="nama"></p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="label" for="r-nim">NIM</label>
+                <input id="r-nim" class="input" inputmode="numeric" placeholder="10 digit" />
+                <p class="field-error hidden" data-err="nim"></p>
+              </div>
+              <div>
+                <label class="label" for="r-prodi">Program studi</label>
+                <select id="r-prodi" class="input">
+                  <option>Teknik Informatika</option>
+                  <option>Sistem Informasi</option>
+                  <option>Teknik Industri</option>
+                  <option>Teknik Elektro</option>
+                  <option>Manajemen</option>
+                  <option>Akuntansi</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="label" for="r-email">Email</label>
+              <input id="r-email" type="email" class="input" autocomplete="email" placeholder="nama@email.com" />
+              <p class="field-error hidden" data-err="email"></p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="label" for="r-pass">Kata sandi</label>
+                <input id="r-pass" type="password" class="input" autocomplete="new-password" placeholder="Min. 8 karakter" />
+                <p class="field-error hidden" data-err="pass"></p>
+              </div>
+              <div>
+                <label class="label" for="r-pass2">Ulangi kata sandi</label>
+                <input id="r-pass2" type="password" class="input" autocomplete="new-password" placeholder="Ketik ulang" />
+                <p class="field-error hidden" data-err="pass2"></p>
+              </div>
+            </div>
+            <p id="r-error" class="field-error hidden"></p>
+            <button id="r-submit" class="btn btn-primary w-full !py-3.5 !text-sm" type="submit">Daftar &amp; masuk</button>
+          </form>
+        </section>
+
+        <p class="text-center text-xs t-muted mt-10">© <span id="year"></span> Universitas Pelita Bangsa</p>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast-wrap" id="toasts"></div>
+
+  <script src="js/auth.js"></script>
+  <script>
+  (() => {
+    'use strict';
+    const $ = (s, r = document) => r.querySelector(s);
+    const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+    const TZ = 'Asia/Jakarta';
+
+    // Jika sudah login, langsung ke aplikasi
+    if (Auth.current()) { location.replace('index.html'); return; }
+
+    /* ---------- Jam & tanggal ---------- */
+    function tick() {
+      const n = new Date();
+      const time = n.toLocaleTimeString('id-ID', { timeZone: TZ, hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }).replace(/\./g, ':');
+      const date = n.toLocaleDateString('id-ID', { timeZone: TZ, weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      $$('[data-clock]').forEach(e => e.textContent = time);
+      $$('[data-date]').forEach(e => e.textContent = date);
+    }
+    tick(); setInterval(tick, 1000);
+    $('#year').textContent = new Date().getFullYear();
+
+    /* ---------- Toast ---------- */
+    function toast(msg, type) {
+      const el = document.createElement('div');
+      el.className = 'toast ' + (type || '');
+      el.textContent = msg;
+      $('#toasts').appendChild(el);
+      setTimeout(() => el.remove(), 3800);
+    }
+
+    /* ---------- Tab Masuk / Daftar ---------- */
+    function showTab(name) {
+      $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+      $('#panel-login').classList.toggle('hidden', name !== 'login');
+      $('#panel-register').classList.toggle('hidden', name !== 'register');
+    }
+    $$('.tab').forEach(t => t.addEventListener('click', () => showTab(t.dataset.tab)));
+
+    /* ---------- Tampilkan / sembunyikan sandi ---------- */
+    $$('[data-toggle-pass]').forEach(btn => btn.addEventListener('click', () => {
+      const input = document.getElementById(btn.dataset.togglePass);
+      const show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      btn.innerHTML = '<i data-lucide="' + (show ? 'eye-off' : 'eye') + '" class="w-4 h-4"></i>';
+      lucide.createIcons();
+    }));
+
+    /* ---------- Login ---------- */
+    $('#btn-fill').addEventListener('click', () => {
+      $('#l-nim').value = '312410511';
+      $('#l-pass').value = 'mahasiswa123';
+    });
+    $('#btn-forgot').addEventListener('click', () =>
+      toast('Reset kata sandi dilakukan melalui BAAK atau email resmi kampus (simulasi).'));
+
+    $('#form-login').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const nim = $('#l-nim').value.trim();
+      const pass = $('#l-pass').value;
+      const err = $('#l-error');
+      err.classList.add('hidden');
+      if (!nim || !pass) { err.textContent = 'NIM dan kata sandi wajib diisi.'; err.classList.remove('hidden'); return; }
+      const btn = $('#l-submit'); btn.disabled = true; btn.textContent = 'Memeriksa…';
+      try {
+        await Auth.login(nim, pass, $('#l-remember').checked);
+        location.replace('index.html');
+      } catch (ex) {
+        err.textContent = ex.message; err.classList.remove('hidden');
+        btn.disabled = false; btn.textContent = 'Masuk';
+      }
+    });
+
+    /* ---------- Registrasi ---------- */
+    function setErr(name, msg) {
+      const p = $('[data-err="' + name + '"]');
+      const input = { nama: '#r-nama', nim: '#r-nim', email: '#r-email', pass: '#r-pass', pass2: '#r-pass2' }[name];
+      p.textContent = msg || '';
+      p.classList.toggle('hidden', !msg);
+      $(input).classList.toggle('is-error', !!msg);
+      return !msg;
+    }
+
+    $('#form-register').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const d = {
+        nama: $('#r-nama').value.trim(), nim: $('#r-nim').value.trim(), prodi: $('#r-prodi').value,
+        email: $('#r-email').value.trim(), password: $('#r-pass').value, pass2: $('#r-pass2').value
+      };
+      let ok = true;
+      ok = setErr('nama', d.nama.length < 3 ? 'Nama minimal 3 karakter.' : '') && ok;
+      ok = setErr('nim', !/^\d{8,12}$/.test(d.nim) ? 'NIM harus 8–12 digit angka.' : '') && ok;
+      ok = setErr('email', !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email) ? 'Format email tidak valid.' : '') && ok;
+      ok = setErr('pass', d.password.length < 8 ? 'Minimal 8 karakter.' : '') && ok;
+      ok = setErr('pass2', d.password !== d.pass2 ? 'Kata sandi tidak sama.' : '') && ok;
+      if (!ok) return;
+
+      const err = $('#r-error'); err.classList.add('hidden');
+      const btn = $('#r-submit'); btn.disabled = true; btn.textContent = 'Membuat akun…';
+      try {
+        await Auth.register(d);
+        await Auth.login(d.nim, d.password, true);
+        location.replace('index.html');
+      } catch (ex) {
+        err.textContent = ex.message; err.classList.remove('hidden');
+        btn.disabled = false; btn.textContent = 'Daftar & masuk';
+      }
+    });
+
+    lucide.createIcons();
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ART Learning Management</title>
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <link rel="apple-touch-icon" href="img/logo.png" />
+  <meta property="og:title" content="ART Learning Management" />
+  <meta property="og:description" content="Sistem Pembelajaran Digital Terintegrasi ART Learning Management." />
+  <meta property="og:image" content="img/thumbnail.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/tw-config.js"></script>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+  <!-- Guard: cek sesi sebelum halaman tampil -->
+  <script src="js/auth.js"></script>
+  <script>if (!Auth.current()) location.replace('login.html');</script>
+</head>
+
+<body>
+  <div class="min-h-screen lg:flex">
+
+    <!-- ============ Sidebar ============ -->
+    <div id="scrim" class="fixed inset-0 z-30 bg-ink/40 backdrop-blur-[2px] hidden lg:hidden" data-act="nav-close">
+    </div>
+    <aside id="sidebar"
+      class="fixed inset-y-0 left-0 z-40 w-72 -translate-x-full transition-transform duration-300 lg:translate-x-0 lg:sticky lg:top-0 lg:h-screen lg:shrink-0 bg-white border-r border-slate-200/70 flex flex-col px-5 py-6">
+      <div class="flex items-center justify-between px-1">
+        <a href="#/dashboard" class="flex items-center gap-3 group">
+          <img src="img/logo.png" alt="ART Logo"
+            class="w-10 h-10 rounded-xl object-contain shadow-sm border border-slate-200/70 transition-transform group-hover:scale-105" />
+          <span class="font-extrabold tracking-tight leading-tight">ART<span
+              class="block text-[11px] font-semibold uppercase tracking-wider t-muted">Learning Management</span></span>
+        </a>
+        <button class="icon-btn lg:hidden" data-act="nav-close" aria-label="Tutup menu"><i data-lucide="x"
+            class="w-4 h-4"></i></button>
+      </div>
+
+      <nav id="nav" class="mt-9 flex-1 space-y-1 overflow-y-auto no-scrollbar" aria-label="Menu utama"></nav>
+
+      <div class="mt-4 rounded-2xl bg-slate-50 border border-slate-200/70 p-3.5 flex items-center gap-3">
+        <span class="avatar w-10 h-10 text-sm" id="side-avatar">—</span>
+        <div class="min-w-0 flex-1">
+          <p class="text-sm font-bold truncate" id="side-name">—</p>
+          <p class="text-xs t-muted truncate" id="side-nim">—</p>
+        </div>
+        <button class="icon-btn !w-9 !h-9" data-act="logout" aria-label="Keluar" title="Keluar"><i data-lucide="log-out"
+            class="w-4 h-4"></i></button>
+      </div>
+    </aside>
+
+    <!-- ============ Konten ============ -->
+    <div class="flex-1 min-w-0 flex flex-col">
+
+      <header class="sticky top-0 z-20 bg-[#f6f7fb]/85 backdrop-blur border-b border-slate-200/60">
+        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center gap-3">
+          <button class="icon-btn lg:hidden" data-act="nav-open" aria-label="Buka menu"><i data-lucide="menu"
+              class="w-4 h-4"></i></button>
+
+          <div class="relative flex-1 max-w-md">
+            <i data-lucide="search"
+              class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 t-muted pointer-events-none"></i>
+            <input id="search" class="input !pl-10 !py-2.5 !rounded-xl" placeholder="Cari mata kuliah, tugas, menu…"
+              autocomplete="off" />
+            <div id="search-results" class="dropdown left-0 right-0 top-12 hidden max-h-96 overflow-auto p-2"></div>
+          </div>
+
+          <div class="ml-auto flex items-center gap-2.5">
+            <div class="hidden sm:flex items-center gap-2.5 bg-white border border-slate-200/70 rounded-xl px-3.5 h-10">
+              <i data-lucide="clock" class="w-4 h-4 text-brand-600"></i>
+              <div class="leading-tight">
+                <p class="text-sm font-bold tabular-nums" data-clock>--:--:--</p>
+              </div>
+              <span class="w-px h-5 bg-slate-200"></span>
+              <p class="text-xs font-medium t-soft hidden md:block" data-date-short>—</p>
+              <span class="text-[10px] font-bold t-muted">WIB</span>
+            </div>
+
+            <div class="relative">
+              <button class="icon-btn" id="bell" data-act="notif-toggle" aria-label="Notifikasi">
+                <i data-lucide="bell" class="w-4 h-4"></i>
+                <span id="bell-badge"
+                  class="absolute -top-1 -right-1 hidden min-w-[1.05rem] h-[1.05rem] px-1 rounded-full bg-[#c2263a] text-white text-[10px] font-bold items-center justify-center"></span>
+              </button>
+              <div id="notif" class="dropdown right-0 top-12 w-[22rem] max-w-[calc(100vw-2rem)] hidden"></div>
+            </div>
+
+            <a href="#/profil" class="avatar w-10 h-10 text-sm hidden sm:inline-flex" id="top-avatar"
+              aria-label="Profil">—</a>
+          </div>
+        </div>
+      </header>
+
+      <main id="view" class="flex-1 w-full max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8"></main>
+
+      <footer class="max-w-[1240px] mx-auto w-full px-4 sm:px-6 lg:px-8 pb-8 text-xs t-muted">
+        © <span id="year"></span> Universitas Pelita Bangsa · Sistem Informasi Mahasiswa
+      </footer>
+    </div>
+  </div>
+
+  <div id="modal-root"></div>
+  <div class="toast-wrap" id="toasts"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
